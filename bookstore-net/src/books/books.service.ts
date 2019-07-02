@@ -27,6 +27,8 @@ export class BooksService {
 
   addBook(book): Promise<any> {
     return new Promise(resolve => {
+      book.id = Number(book.id);
+
       this.books.push(book);
       resolve(this.books);
     });
