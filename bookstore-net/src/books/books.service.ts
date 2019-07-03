@@ -17,7 +17,7 @@ export class BooksService {
     return new Promise(resolve => {
       const book = this.books.find(book => book.id === id);
 
-      if(!book) {
+      if (!book) {
         throw new HttpException('Book doesnt exist!', 404);
       }
 
@@ -40,7 +40,7 @@ export class BooksService {
     return new Promise(resolve => {
       const index = this.books.findIndex(book => book.id === id);
 
-      if(index === -1) {
+      if (index === -1) {
         throw new HttpException('Book doesnt exist!', 404);
       }
 

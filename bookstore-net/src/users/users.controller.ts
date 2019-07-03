@@ -1,10 +1,19 @@
-import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Res,
+  HttpStatus,
+  Post,
+  Body,
+  NotFoundException,
+  Param,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDTO } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService) {}
 
   @Post()
   async addUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
@@ -27,10 +36,10 @@ export class UsersController {
   async getUser(@Res() res, @Param('userID') userID) {
     const user = await this.usersService.getUser(userID);
 
-    if(!user) {
+    if (!user) {
       throw new NotFoundException('User doesnt not exist!');
     }
 
-    return res.status(HttpStatus.OK).json(user)
+    return res.status(HttpStatus.OK).json(user);
   }
 }
